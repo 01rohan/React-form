@@ -1,14 +1,14 @@
-import React, { useImperativeHandle, Fragment } from 'react';
-import { DropTarget } from 'react-dnd';
-import FormElements from '../form-elements';
-import ItemTypes from '../ItemTypes';
+import React, { useImperativeHandle, Fragment } from "react";
+import { DropTarget } from "react-dnd";
+import FormElements from "../form-elements";
+import ItemTypes from "../ItemTypes";
 
-import CustomElement from '../form-elements/custom-element';
-import Registry from '../stores/registry';
-import store from '../stores/store';
+import CustomElement from "../form-elements/custom-element";
+import Registry from "../stores/registry";
+import store from "../stores/store";
 
 function getCustomElement(item, props) {
-  if (!item.component || typeof item.component !== 'function') {
+  if (!item.component || typeof item.component !== "function") {
     item.component = Registry.get(item.key);
     if (!item.component) {
       console.error(`${item.element} was not registered`);
@@ -26,9 +26,9 @@ function getCustomElement(item, props) {
 
 function getElement(item, props) {
   if (!item) return null;
-  const Element = item.custom ?
-    () => getCustomElement(item, props) :
-    FormElements[item.element || item.key];
+  const Element = item.custom
+    ? () => getCustomElement(item, props)
+    : FormElements[item.element || item.key];
 
   return (
     <Fragment>
@@ -39,13 +39,13 @@ function getElement(item, props) {
 
 function getStyle(backgroundColor) {
   return {
-    border: '1px solid rgba(0,0,0,0.2)',
-    minHeight: '2rem',
-    minWidth: '7rem',
-    width: '100%',
+    border: "1px solid rgba(0,0,0,0.2)",
+    minHeight: "2rem",
+    minWidth: "7rem",
+    width: "100%",
     backgroundColor,
     padding: 0,
-    float: 'left',
+    float: "left",
   };
 }
 
@@ -57,7 +57,7 @@ function isContainer(item) {
         return true;
       }
       if (data.field_name) {
-        return data.field_name.indexOf('_col_row') > -1;
+        return data.field_name.indexOf("_col_row") > -1;
       }
     }
   }
@@ -65,9 +65,21 @@ function isContainer(item) {
 }
 
 const Dustbin = React.forwardRef(
-  ({
-    draggedItem, parentIndex, canDrop, isOver, isOverCurrent, connectDropTarget, items, col, getDataById, ...rest
-  }, ref) => {
+  (
+    {
+      draggedItem,
+      parentIndex,
+      canDrop,
+      isOver,
+      isOverCurrent,
+      connectDropTarget,
+      items,
+      col,
+      getDataById,
+      ...rest
+    },
+    ref
+  ) => {
     const item = getDataById(items[col]);
     useImperativeHandle(
       ref,
@@ -75,12 +87,12 @@ const Dustbin = React.forwardRef(
         onDrop: (dropped) => {
           const { data } = dropped;
           if (data) {
-            console.log('dropped', dropped);
-            store.dispatch('deleteLastItem');
+            console.log("dropped", dropped);
+            store.dispatch("deleteLastItem");
           }
         },
       }),
-      [],
+      []
     );
 
     const element = getElement(item, rest);
@@ -90,29 +102,29 @@ const Dustbin = React.forwardRef(
     // console.log('HoverIndex:',parentIndex)
     // console.log('SameCard:',sameCard)
 
-    let backgroundColor = 'rgba(0, 0, 0, .03)';
+    let backgroundColor = "rgba(0, 0, 0, .03)";
 
     if (!sameCard && isOver && canDrop && !draggedItem.data.isContainer) {
-      backgroundColor = '#F7F589';
+      backgroundColor = "#F7F589";
     }
 
     // console.log('sameCard, canDrop', sameCard, canDrop);
     return connectDropTarget(
-      <div style={!sameCard ? getStyle(backgroundColor) : getStyle('rgba(0, 0, 0, .03') }>
+      <div
+        style={
+          !sameCard ? getStyle(backgroundColor) : getStyle("rgba(0, 0, 0, .03")
+        }
+      >
         {element}
-      </div>,
+      </div>
     );
-  },
+  }
 );
 
 export default DropTarget(
   (props) => props.accepts,
   {
-    drop(
-      props,
-      monitor,
-      component,
-    ) {
+    drop(props, monitor, component) {
       if (!component) {
         return;
       }
@@ -128,13 +140,13 @@ export default DropTarget(
 
       // Do not allow replace component other than both items in same multi column row
       if (item.col === undefined && props.items[props.col]) {
-        store.dispatch('resetLastItem');
+        store.dispatch("resetLastItem");
         return;
       }
 
       if (!isContainer(item)) {
-        (component).onDrop(item);
-        if (item.data && typeof props.setAsChild === 'function') {
+        component.onDrop(item);
+        if (item.data && typeof props.setAsChild === "function") {
           const isNew = !item.data.id;
           const data = isNew ? item.onCreate(item.data) : item.data;
           props.setAsChild(props.data, data, props.col, isBusy);
@@ -148,5 +160,5 @@ export default DropTarget(
     isOver: monitor.isOver(),
     isOverCurrent: monitor.isOver({ shallow: true }),
     canDrop: monitor.canDrop(),
-  }),
+  })
 )(Dustbin);

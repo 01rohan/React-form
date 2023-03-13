@@ -291,9 +291,6 @@ export default class ScaleRatings extends React.Component {
             min={this.min}
             max={this.max}
             readOnly
-            // style={{
-            //   ,
-            // }}
           />
         </span>
       </span>

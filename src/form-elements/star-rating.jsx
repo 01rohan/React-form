@@ -287,13 +287,10 @@ export default class StarRating extends React.Component {
             type="hidden"
             name={this.props.name}
             value={this.state.ratingCache.rating}
-            style={{ display: "none !important" }}
+            style={{ display: "none !important", width: 65 }}
             min={this.min}
             max={this.max}
             readOnly
-            style={{
-              width: 65,
-            }}
           />
         </span>
       </span>

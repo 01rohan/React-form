@@ -88,7 +88,7 @@
   "place-holder-phone-number": "Phone Number",
   "easy": "Easy",
   "difficult": "Difficult",
-  "drop-zone": "Dropzone",
+  "drop-zone": "Drag and Drop a form component",
 
   "message.is-required": "is required",
   "message.was-answered-incorrectly": "was answered incorrectly",
