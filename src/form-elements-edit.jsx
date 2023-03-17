@@ -21,6 +21,9 @@ const toolbar = {
     className: undefined,
     options: ["bold", "italic", "underline", "superscript", "subscript"],
   },
+  fontSize: {
+    options: [7, 8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
+  },
 };
 
 export default class FormElementsEdit extends React.Component {

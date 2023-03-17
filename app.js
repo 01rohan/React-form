@@ -98,7 +98,7 @@ const App = () => (
     saveUrl={saveUrl}
     locale='en'
     saveAlways={false}
-    // toolbarItems={items}
+  // toolbarItems={items}
   />);
 
 ReactDOM.render(
