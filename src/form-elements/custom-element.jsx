@@ -33,7 +33,7 @@ class CustomElement extends Component {
 
     return (
       <div className={baseClasses} style={{ ...this.props.style }}>
-        <ComponentHeader {...this.props} />
+        {/* <ComponentHeader {...this.props} /> */}
         {bare ? (
           <Element
             data={this.props.data}

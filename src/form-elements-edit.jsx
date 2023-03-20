@@ -558,7 +558,9 @@ export default class FormElementsEdit extends React.Component {
           <div />
         )}
 
-        {canHavePageBreakBefore && (
+        {/* For page break down */}
+
+        {/* {canHavePageBreakBefore && (
           <div className="form-group">
             <label className="control-label">
               <IntlMessages id="print-options" />
@@ -584,7 +586,7 @@ export default class FormElementsEdit extends React.Component {
               </label>
             </div>
           </div>
-        )}
+        )} */}
 
         {canHaveAlternateForm && (
           <div className="form-group">

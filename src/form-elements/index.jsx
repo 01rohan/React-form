@@ -5,13 +5,13 @@ import React from "react";
 import Select from "react-select";
 import SignaturePad from "react-signature-canvas";
 import ReactBootstrapSlider from "react-bootstrap-slider";
-
 import StarRating from "./star-rating";
 import ScaleRatings from "./scale-rating";
 import DatePicker from "./date-picker";
 import ComponentHeader from "./component-header";
 import ComponentLabel from "./component-label";
 import myxss from "./myxss";
+import ComponentHeader1 from "./component-header-1";
 
 const FormElements = {};
 
@@ -40,6 +40,7 @@ class Header extends React.Component {
             __html: myxss.process(this.props.data.content),
           }}
         />
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -69,6 +70,7 @@ class Paragraph extends React.Component {
             __html: myxss.process(this.props.data.content),
           }}
         />
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -98,6 +100,7 @@ class Label extends React.Component {
             __html: myxss.process(this.props.data.content),
           }}
         />
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -114,6 +117,7 @@ class LineBreak extends React.Component {
       <div style={{ ...this.props.style }} className={baseClasses}>
         <ComponentHeader {...this.props} />
         <hr />
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -151,6 +155,7 @@ class TextInput extends React.Component {
           <ComponentLabel {...this.props} />
           <input {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -188,6 +193,7 @@ class EmailInput extends React.Component {
           <ComponentLabel {...this.props} />
           <input {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -225,6 +231,7 @@ class PhoneNumber extends React.Component {
           <ComponentLabel {...this.props} />
           <input {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -263,6 +270,7 @@ class NumberInput extends React.Component {
           <ComponentLabel {...this.props} />
           <input {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -300,6 +308,7 @@ class TextArea extends React.Component {
           <ComponentLabel {...this.props} />
           <textarea {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -346,6 +355,7 @@ class Dropdown extends React.Component {
             })}
           </select>
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -417,6 +427,7 @@ class Signature extends React.Component {
           )}
           <input {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -479,6 +490,7 @@ class Tags extends React.Component {
           <ComponentLabel {...this.props} />
           <Select {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -544,6 +556,7 @@ class Checkboxes extends React.Component {
             );
           })}
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -611,6 +624,7 @@ class RadioButtons extends React.Component {
             );
           })}
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -679,6 +693,7 @@ class BulletList extends React.Component {
             );
           })}
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -704,6 +719,7 @@ class Image extends React.Component {
           />
         )}
         {!this.props.data.src && <div className="no-image">No Image</div>}
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -742,6 +758,7 @@ class Rating extends React.Component {
           <ComponentLabel {...this.props} />
           <StarRating {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -780,6 +797,7 @@ class ScaleRating extends React.Component {
           <ComponentLabel {...this.props} />
           <ScaleRatings {...props} />
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -800,6 +818,7 @@ class HyperLink extends React.Component {
             {this.props.data.content}
           </a>
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -822,6 +841,7 @@ class Download extends React.Component {
             {this.props.data.content}
           </a>
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -941,6 +961,7 @@ class Camera extends React.Component {
             </div>
           )}
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -1066,6 +1087,7 @@ class FileUpload extends React.Component {
             </div>
           )}
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }
@@ -1161,6 +1183,7 @@ class Range extends React.Component {
           <input name={name} value={this.state.value} type="hidden" />
           <datalist id={props.list}>{_datalist}</datalist>
         </div>
+        <ComponentHeader1 {...this.props} />
       </div>
     );
   }

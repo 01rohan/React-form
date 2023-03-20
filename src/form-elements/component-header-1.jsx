@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderBar from "./header-bar";
+import HeaderBar1 from "./header-bar-1";
 
 const ComponentHeader = (props) => {
   if (props.mutable) {
@@ -10,7 +10,7 @@ const ComponentHeader = (props) => {
       {/* {props.data.pageBreakBefore && (
         <div className="preview-page-break">Page Break</div>
       )} */}
-      <HeaderBar
+      <HeaderBar1
         parent={props.parent}
         editModeOn={props.editModeOn}
         data={props.data}
